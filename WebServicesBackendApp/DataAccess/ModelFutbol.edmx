@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FutbolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="idequipo" />
+          </Key>
+          <Property Name="idequipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jugador">
+          <Key>
+            <PropertyRef Name="idjugador" />
+          </Key>
+          <Property Name="idjugador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idequipo" Type="int" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" />
+          <Property Name="estatus" Type="float" />
+          <Property Name="posicion" Type="nchar" MaxLength="20" />
+          <Property Name="edad" Type="int" />
+          <Property Name="foto" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Jugador_Equipo">
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="0..1" />
+          <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipo">
+              <PropertyRef Name="idequipo" />
+            </Principal>
+            <Dependent Role="Jugador">
+              <PropertyRef Name="idequipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FutbolModelStoreContainer">
+          <EntitySet Name="Equipo" EntityType="Self.Equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Jugador_Equipo" Association="Self.FK_Jugador_Equipo">
+            <End Role="Equipo" EntitySet="Equipo" />
+            <End Role="Jugador" EntitySet="Jugador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FutbolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="idequipo" />
+          </Key>
+          <Property Name="idequipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Equipo" FromRole="Equipo" ToRole="Jugador" />
+        </EntityType>
+        <EntityType Name="Jugador">
+          <Key>
+            <PropertyRef Name="idjugador" />
+          </Key>
+          <Property Name="idjugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idequipo" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="estatus" Type="Double" />
+          <Property Name="posicion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="edad" Type="Int32" />
+          <Property Name="foto" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Equipo" Relationship="Self.FK_Jugador_Equipo" FromRole="Jugador" ToRole="Equipo" />
+        </EntityType>
+        <Association Name="FK_Jugador_Equipo">
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="0..1" />
+          <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipo">
+              <PropertyRef Name="idequipo" />
+            </Principal>
+            <Dependent Role="Jugador">
+              <PropertyRef Name="idequipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FutbolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Equipoes" EntityType="Self.Equipo" />
+          <EntitySet Name="Jugadors" EntityType="Self.Jugador" />
+          <AssociationSet Name="FK_Jugador_Equipo" Association="Self.FK_Jugador_Equipo">
+            <End Role="Equipo" EntitySet="Equipoes" />
+            <End Role="Jugador" EntitySet="Jugadors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FutbolModelStoreContainer" CdmEntityContainer="FutbolEntities">
+          <EntitySetMapping Name="Equipoes">
+            <EntityTypeMapping TypeName="FutbolModel.Equipo">
+              <MappingFragment StoreEntitySet="Equipo">
+                <ScalarProperty Name="idequipo" ColumnName="idequipo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jugadors">
+            <EntityTypeMapping TypeName="FutbolModel.Jugador">
+              <MappingFragment StoreEntitySet="Jugador">
+                <ScalarProperty Name="idjugador" ColumnName="idjugador" />
+                <ScalarProperty Name="idequipo" ColumnName="idequipo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="posicion" ColumnName="posicion" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

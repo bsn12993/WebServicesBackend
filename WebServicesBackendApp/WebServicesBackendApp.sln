@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A41E8691-5A34-4B1A-811D-C632B33E846D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{080DAC80-0ECC-4A42-93EF-2ADF7A7FD668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{BCE39F8B-3713-4529-A37B-ED22A68C8FFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiREST", "ApiREST\ApiREST.csproj", "{FAA90CD9-6EC2-4E2C-A4CF-C03088CD2C2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A41E8691-5A34-4B1A-811D-C632B33E846D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41E8691-5A34-4B1A-811D-C632B33E846D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41E8691-5A34-4B1A-811D-C632B33E846D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41E8691-5A34-4B1A-811D-C632B33E846D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080DAC80-0ECC-4A42-93EF-2ADF7A7FD668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080DAC80-0ECC-4A42-93EF-2ADF7A7FD668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080DAC80-0ECC-4A42-93EF-2ADF7A7FD668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080DAC80-0ECC-4A42-93EF-2ADF7A7FD668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE39F8B-3713-4529-A37B-ED22A68C8FFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE39F8B-3713-4529-A37B-ED22A68C8FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE39F8B-3713-4529-A37B-ED22A68C8FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE39F8B-3713-4529-A37B-ED22A68C8FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA90CD9-6EC2-4E2C-A4CF-C03088CD2C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA90CD9-6EC2-4E2C-A4CF-C03088CD2C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA90CD9-6EC2-4E2C-A4CF-C03088CD2C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA90CD9-6EC2-4E2C-A4CF-C03088CD2C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
